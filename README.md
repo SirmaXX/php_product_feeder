@@ -32,6 +32,6 @@ note: solutions folder belongs to  Technical issues. This project is independent
 * Day 7 (2022/8/29 ): finish the job 
 
 ### Technical issues
-1. XML & JSON transformations
+1. <s>XML & JSON transformations</s>
 2. URL routing without frameworks
  
