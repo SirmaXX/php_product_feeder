@@ -18,8 +18,8 @@ note: solutions folder belongs to  Technical issues. This project is independent
 
 ## Tracking Log
 
-* Day 1 (2022/8/23 ): Create project and software architecture. 
-* Day 2 (2022/8/24 ): Solve the technical issues & start to develop libraries
+* Day 1 (2022/8/23 ):<s> Create project and software architecture. </s>
+* Day 2 (2022/8/24 ): Solve the technical issues & <s> start to develop libraries  </s>
 
 * Day 3(2022/8/25 ): Start to develop routing & finish the libraries
 
