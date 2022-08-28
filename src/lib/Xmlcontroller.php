@@ -4,45 +4,54 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 
+class Xml
+{
 
-//datafile
-$data_file = 'Json_Folder/products.json';
+  private $data_file = 'Json_Folder/products.json';
 
 
+  function __construct()
+  {
+    if (!file_exists($this->data_file)) {
+      echo "Dosya yok";
+    }
+  }
+  public function build($json_data)
+  {
+      $keys = array_keys($json_data);
+  
+      $dom = new DOMDocument('1.0', 'UTF-8');
+      $dom->formatOutput = true;
+  
+      $root = $dom->createElement('root');
+      $dom->appendChild($root);
+      for ($i = 0; $i < count($json_data); $i++) {
+          $result = $dom->createElement('row');
+          $root->appendChild($result);
+          foreach ($json_data[$keys[$i]] as $key => $value) {
+  
+              $result->appendChild($dom->createElement($key, $value));
+          }
+      }
+  
+      echo '<xmp>' . $dom->saveXML() . '</xmp>';
+  }
 
-function Json_to_Xml($data_file)
+
+  public function Json_to_Xml()
 {
     // Read the JSON file 
-    $json = file_get_contents($data_file);
+    $json = file_get_contents($this->data_file);
     // Decode the JSON file
     $json_data = json_decode($json, true);
-    build($json_data);
+    $this->build($json_data);
 }
 // echo '<xmp>'.Json_to_Xml($data_file) .'</xmp>';
 
 //return $dom->saveXML();
-function build($json_data)
-{
-    $keys = array_keys($json_data);
 
-    $dom = new DOMDocument('1.0', 'UTF-8');
-    $dom->formatOutput = true;
 
-    $root = $dom->createElement('root');
-    $dom->appendChild($root);
-    for ($i = 0; $i < count($json_data); $i++) {
-        $result = $dom->createElement('row');
-        $root->appendChild($result);
-        foreach ($json_data[$keys[$i]] as $key => $value) {
-
-            $result->appendChild($dom->createElement($key, $value));
-        }
-    }
-
-    echo '<xmp>' . $dom->saveXML() . '</xmp>';
-}
-
-function Build_Single($json_data, $id)
+public function Build_Single($json_data, $id)
 {
     $id=$id-1;
     $onevalue =  $json_data[$id];
@@ -70,54 +79,90 @@ function Build_Single($json_data, $id)
 
 
 
-function SJson_to_Xml($data_file, $id)
+public function SJson_to_Xml( $id)
 {
     // Read the JSON file 
-    $json = file_get_contents($data_file);
+    $json = file_get_contents($this->data_file);
     // Decode the JSON file
     $json_data = json_decode($json, true);
 
 
-    Build_Single($json_data, $id);
+    $this->Build_Single($json_data, ($id+1));
 }
 
-function Xml_SDelete($data_file, $id){
-      $data = file_get_contents($data_file);
+public function Xml_SDelete( $id){
+      $data = file_get_contents($this->data_file);
       $json =  json_decode($data, true);
   
       unset($json[$id]);
   
       $json = json_encode($json, JSON_PRETTY_PRINT);
-      file_put_contents($data_file, $json);
+      file_put_contents($this->data_file, $json);
     
 }
 
 
-function Xml_SUpdate($data_file, $id,$name,$price,$category)
+public function Xml_SUpdate( $id,$name,$price,$category)
 {
-    $data = file_get_contents($data_file);
+    $data = file_get_contents($this->data_file);
     $json =  json_decode($data, true);
 
-    foreach ($json as $a) {
+    foreach ($json as &$a) {
 
-      if ($a['id'] == $id) {
-
-        if (!empty($name)) {
-          $a['name'] = $name;
-        }
-        if (!empty($price)) {
-          $a['price'] = $price;
-        }
-        if (!empty($category)) {
-          $a['category'] = $category;
+        if ($a['id'] == $id) {
+      
+          if (!empty($name)) {
+            $a['name'] = $name;
+          }
+          if (!empty($price)) {
+            $a['price'] = $price;
+          }
+          if (!empty($category)) {
+            $a['category'] = $category;
+          }
         }
       }
-    }
 
     $json = json_encode($json);
-    file_put_contents($data_file, $json);
+    file_put_contents($this->data_file, $json);
   }
 
 
+  public function XML_SAdd($name, $price, $category)
+  {
+    $data = file_get_contents($this->data_file);
+    $json =  json_decode($data, true);
+    $elementCount  = count($json);
+    if ($elementCount == 2147483647) {
+      //2 milyar  147 milyon 483 bin  647 .veride hata verecektir çünkü int limitine ulaşılmıştır.
+      echo " veritabanında idleri sıfırla çünkü id doldu. ";
+    } else {
+      if (empty($json[$elementCount + 1])) {
+        echo "veri var";
+      } else {
+        $array = array(
+          "id" => $elementCount + 1,
+          "name" => $name,
+          "price" => $price,
+          "category" => $category
+        );
+
+        $json[] = $array;
+      }
+    }
+    $json = json_encode($json, JSON_PRETTY_PRINT);
+    file_put_contents($this->data_file, $json);
+  }
+
+}
+
+/*
+EXAMPLE for adding
+$xml1=new Xml();
+$xml1->XML_SAdd("den123",987, "kategori");
+
+
+
+*/
 
 ?>
