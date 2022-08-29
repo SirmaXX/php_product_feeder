@@ -37,3 +37,4 @@ note: solutions folder belongs to  Technical issues. This project is independent
 2. <s>URL routing without frameworks</s>
 3. <s>Testing platform </s>
 4. <s>Logging platform </s>
+5. <s>Message Platform </s>
