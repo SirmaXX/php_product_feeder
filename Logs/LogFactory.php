@@ -1,5 +1,5 @@
 <?php
-/* Kaynak kod :https://github.com/SirmaXX/phplogger */
+/* My own logging library :https://github.com/SirmaXX/phplogger */
 class Log
 {
     protected $severity;
@@ -33,7 +33,7 @@ class Log
     }
 }
 
-class LogFactory
+class LogFactory extends Log
 {
 
 
@@ -46,17 +46,16 @@ class LogFactory
         $user= $_SERVER['REMOTE_ADDR'];
         $browser=$_SERVER['HTTP_USER_AGENT'];
         $handle = fopen($log_file, 'a') or die('Cannot open file:  '.$log_file);
-        $data = ".$severity. <br>  .$currenttime  .. <br>  .$user. <br>  .$process <br>  .$browser";
+        $data = ".[Aciliyet: ].$severity. [Zaman :].$currenttime  . [Kullanıcı :] .$user.  [İŞLEM :]  .$process .[Tarayıcı :]  .$browser";
         fwrite($handle, $data);
        
 
     }
 }
 
-
-
+/*
+Example usage
 $log = LogFactory::create('ERROR(severity)','newadditem(processname)');
 
 
-
-
+*/
