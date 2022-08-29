@@ -17,12 +17,12 @@ class Test
 
   function Ex_time($fname, $par)
   {
-    // Starting clock time in seconds
+  /* source code :https://www.geeksforgeeks.org/measuring-script-execution-time-in-php/  */
     $start_time = microtime(true);
     $fname($par);
-    // End clock time in seconds
+  
     $end_time = microtime(true);
-    // Calculate script execution time
+    
     $execution_time = ($end_time - $start_time);
     echo " Execution time of script = " . $execution_time . " sec";
   }

@@ -1,5 +1,5 @@
 <?php
-
+/* Kaynak kod :https://github.com/SirmaXX/phplogger */
 class Log
 {
     protected $severity;
@@ -52,3 +52,11 @@ class LogFactory
 
     }
 }
+
+
+
+$log = LogFactory::create('ERROR(severity)','newadditem(processname)');
+
+
+
+
