@@ -19,10 +19,14 @@ $json->All_row();
 You can use this method  in all modules.(Logs,router,json,xml controller)
 
 ## Missings | 	deficiencies  !
-All properties are developed but  I couldn't create routing specific id's api on http methods.
+1.All properties are developed but  I couldn't create routing specific id's api on http methods.
+
+2.All modules need to improvements,they are work in basic level but they can more effective with subclass.
+
 ## Architecture
 * Views
 * Lib Folder
+  * Router.php
   * JsonController.php
   * XmlController.php
 * Json Folder
@@ -34,7 +38,7 @@ All properties are developed but  I couldn't create routing specific id's api on
   * LogFactory.php
 
 
-Note: All modules developed independents from each other.
+Note: All modules developed independents from each other.They need only product.json and router.php need view folder .
 
 ## Tracking Log
 

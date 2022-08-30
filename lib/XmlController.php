@@ -159,9 +159,7 @@ public function Xml_SUpdate( $id,$name,$price,$category)
 /*
 EXAMPLE for adding
 $xml1=new Xml();
-$xml1->XML_SAdd("den123",987, "kategori");
-
-
+$xml1->Json_to_Xml();
 
 */
 

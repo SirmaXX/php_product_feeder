@@ -33,7 +33,7 @@ class Log
     }
 }
 
-class LogFactory extends Log
+class LogFactory 
 {
 
 
@@ -55,7 +55,8 @@ class LogFactory extends Log
 
 /*
 Example usage
+
+$log =new LogFactory();
 $log = LogFactory::create('ERROR(severity)','newadditem(processname)');
-
-
 */
+
