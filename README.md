@@ -1,7 +1,27 @@
 # Php product feeder
 
-## Architecture
 
+## How to use Project
+```
+php -S localhost:1234 index.php
+```
+
+
+## How to use Modules
+### Json Controller
+```
+include 'lib/JsonController.php';
+
+$json=new Json();
+
+$json->All_row();
+```
+You can use this method  in all modules.(Logs,router,json,xml controller)
+
+## Missings | 	deficiencies  !
+All properties are developed but  I couldn't create routing specific id's api on http methods.
+## Architecture
+* Views
 * Lib Folder
   * JsonController.php
   * XmlController.php
