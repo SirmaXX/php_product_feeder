@@ -8,8 +8,8 @@ error_reporting(E_ALL);
 
 require('JsonController.php');
 
-$xml = new Json();
-$xml->Single_Delete($id);
+$json_item = new Json();
+$json_item->Single_Delete($id);
 
 
 ?>

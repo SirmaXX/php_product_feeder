@@ -8,8 +8,8 @@
 
     require('JsonController.php');
 
-    $xml = new Json();
-    $xml->Single_row($id);
+    $json_item= new Json();
+    $json_item->Single_row($id);
 
 
     ?>
