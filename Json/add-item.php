@@ -8,8 +8,8 @@ error_reporting(E_ALL);
 
 require('JsonController.php');
 
-$xml1 = new Json();
-$xml1->Single_Add($name, $price, $category);
+$json_item = new Json();
+$json_item->Single_Add($name, $price, $category);
 
 
 ?>
