@@ -7,7 +7,7 @@ error_reporting(-1);
 class Xml
 {
 
-  private $data_file = 'Json_Folder/products.json';
+  private $data_file = 'Data_Folder/products.json';
 
 
   function __construct()
@@ -87,7 +87,7 @@ public function SJson_to_Xml( $id)
     $json_data = json_decode($json, true);
 
 
-    $this->Build_Single($json_data, ($id+1));
+    $this->Build_Single($this->data_file, ($id+1));
 }
 
 public function Xml_SDelete( $id){

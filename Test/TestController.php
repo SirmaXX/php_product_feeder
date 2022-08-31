@@ -1,8 +1,15 @@
 
 <?php
+
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 $calls = 0;
 $passed = 0;
-class Test
+
+//Test için ana sınıf
+abstract class Test
 {
 
   function __construct()
@@ -13,8 +20,8 @@ class Test
   {
     echo  $GLOBALS['calls']++;
 
-    $this->Ex_time($fname, $par);
-    $this->Criteria('int', $fname, $par, 1000);
+    // $this->Ex_time($fname, $par);
+    echo   $this->Criteria('int', $fname, $par, 1000);
   }
 
   /* çalışma zamanını bize saniye olarak olarak veren metod
@@ -30,8 +37,6 @@ class Test
     // Calculate script execution time
     $execution_time = ($end_time - $start_time);
     echo " Execution time of script = " . $execution_time . " sec";
-    echo "<br>";
-    echo " " . $GLOBALS['passed'] . " test are passed ";
   }
 
   /* aşağıdaki 2 methodu çalıştırmamızı sağlayan method */
@@ -47,25 +52,67 @@ class Test
 
     return  $testcount;
   }
-  /*
 
+  abstract public function Check_Type($str);
+  abstract function  Check_Output($func, $par, $output): bool;
+}
+
+
+//json veriler için hazırlanan test
+class JsonTest extends Test
+{
+  /*
   fonksiyon çıktısının bizim istediğimiz  çıktının veri tipi aynımı kontrol eden method
   */
-  public  function  Check_Type($output, $datatype)
-  {
-    if (gettype($output) == $datatype) {
 
-      echo "tipler eşit";
-      return true;
-    } else {
-      echo "tipler eşit değil";
-      return false;
-    }
+  public function Check_Type($str)
+  {
+    $json = json_decode($str);
+    return $json && $str != $json;
   }
 
 
+  //istenilen output ile  fonksiyonun outputu eşitmi onu kontrol eden method
+  public function  Check_Output($func, $par, $output): bool
+  {
+    if ($func($par) == $output) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+
+$a = 1;
+function deneme($a)
+{
+
+  for ($i = 1; $i < 1000; $i++) {
+    $a++;
+  }
+  return $a;
+}
+
+$test = new JsonTest();
+echo $test->Check_Output('deneme', 1, 1000);
+
+
+
+
+/*
+
+
+  source https://stackoverflow.com/questions/6041741/fastest-way-to-check-if-a-string-is-json-in-php 
+ public function  isJson($str)
+ {
+   $json = json_decode($str);
+   return $json && $str != $json;
+ }
+
+
 //istenilen output ile  fonksiyonun outputu eşitmi onu kontrol eden method
-  function  Check_Output($func, $par, $output)
+  function  Check_Output($func, $par, $output):bool
   {
     if ($func($par) == $output) {
       return true;
@@ -74,14 +121,13 @@ class Test
     }
   }
 
+*/
 
-  /* source https://stackoverflow.com/questions/6041741/fastest-way-to-check-if-a-string-is-json-in-php */
-  public function  isJson($str)
-  {
-    $json = json_decode($str);
-    return $json && $str != $json;
-  }
-}
+
+
+
+
+
 
 /*
 Hazır bir örnek 

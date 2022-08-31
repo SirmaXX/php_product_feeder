@@ -3,7 +3,7 @@
 class Json
 {
 
-  private $data_file = 'Json_Folder/products.json';
+  private $data_file = 'Data_Folder/products.json';
 
 
   function __construct()
@@ -18,7 +18,8 @@ class Json
   {
     $json = file_get_contents($this->data_file);
     $json_data = json_decode($json, true);
-    print_r($json_data);
+    $json_string = json_encode($json_data , JSON_PRETTY_PRINT);
+    print_r($json_string);
   }
 
 
@@ -28,8 +29,10 @@ class Json
     $json = file_get_contents($this->data_file);
     // Decode the JSON file
     $json_data = json_decode($json, true);
-    print_r($json_data[$id + 1]);
+    $json_string = json_encode($json_data[$id-1] , JSON_PRETTY_PRINT);
+    print_r( $json_string);
   }
+
   /*  add function */
   public function Single_Add($name, $price, $category)
   {
@@ -93,8 +96,6 @@ class Json
     } else {
       echo "veri yok";
     }
-
-
     $json = json_encode($json, JSON_PRETTY_PRINT);
     file_put_contents($this->data_file, $json);
   }

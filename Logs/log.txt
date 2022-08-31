@@ -1,0 +1,7 @@
+[Aciliyet:ERROR] [Zaman:2022.08.30/10.40.36pm]   [İŞLEM :newadditem(processname) ]  
+  [Aciliyet:ERROR] [Zaman:2022.08.30/10.40.36pm]   [İŞLEM :newadditem(processname) ]  
+  [Aciliyet:ERROR] [Zaman:2022.08.30/10.40.37pm]   [İŞLEM :newadditem(processname) ]  
+  [Aciliyet:ERROR] [Zaman:2022.08.30/10.40.46pm]   [İŞLEM :newadditem(processname) ]  
+  [Aciliyet:ERROR] [Zaman:2022.08.30/10.40.47pm]   [İŞLEM :newadditem(processname) ]  
+  [Aciliyet:ERROR] [Zaman:2022.08.30/10.40.48pm]   [İŞLEM :newadditem(processname) ]  
+  
