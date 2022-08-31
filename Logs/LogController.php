@@ -37,6 +37,8 @@ class Log
        
 
     }
+   public function __destruct(){}
+    
 }
 // Bu sınıflar için yeni özellikler için açıldı
 class Info extends Log{
@@ -48,13 +50,14 @@ class Warning extends Log{
 }
 
 
-class Error extends Log{
+class ErrorLog extends Log{
 
 }
 /*
 Example usage
-*/
 $log =new Info();
 $log = Info::create('ERROR','newadditem(processname)');
+*/
+
 
 
