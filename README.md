@@ -10,35 +10,52 @@ php -S localhost:1234 index.php
 ## How to use Modules
 ### Json Controller
 ```
-include 'lib/JsonController.php';
+include 'JsonController.php';
 
 $json=new Json();
 
 $json->All_row();
 ```
-You can use this method  in all modules.(Logs,router,json,xml controller)
+You can use this method  in all modules.(LogFactory,json controller,xml controller) .If you need more detail about project .You can run and go to index page for details.
 
 ## Missings | 	deficiencies  !
-1.All properties are developed but  I couldn't create routing specific id's api on http methods.
+1.All modules need to improvements,they are work in basic level but they can more effective with subclass.
 
-2.All modules need to improvements,they are work in basic level but they can more effective with subclass.
+2.I need time for post and get  requests for url routing.
+
+3.Test and Log not used in this projects
 
 ## Architecture
-* Views
-* Lib Folder
-  * Router.php
-  * JsonController.php
+* views
+  * 404.php
+  * index.php
+  * info.php
+* Xml
   * XmlController.php
-* Json Folder
+  * add-item.php
+  * delete-item.php
+  * get-item.php
+  * items.php
+* Json
+  * JsonController.php
+  * add-item.php
+  * delete-item.php
+  * get-item.php
+  * items.php
+* Data_Folder
   * products.json
-* index.php
 * Test Folder
   * TestController.php
 * Logs
   * LogFactory.php
+* routes.php
+* router.php
 
 
 Note: All modules developed independents from each other.They need only product.json and router.php need view folder .
+
+## Dependencies
+https://phprouter.com/   I have used this library for url routing.
 
 ## Tracking Log
 
@@ -53,11 +70,12 @@ Note: All modules developed independents from each other.They need only product.
 
 * Day 6 (2022/8/28 ): <s>organize all things</s>
 
-* Day 7 (2022/8/29 ): <s>Develop Test cases with framework </s>
-* Day 7 (2022/8/30 ): Project submission
+* Day 7 (2022/8/29 ): <s>Develop Test cases with framework </s> 
+* Day 7 (2022/8/30 ): <s>Project submission</s>
 
 
 ## Future Features
 1. Cache development
 2. Dockerizing
 3. Documentation
+4. Test  & Log implementation

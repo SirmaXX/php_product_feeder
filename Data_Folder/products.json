@@ -1,0 +1,20 @@
+{
+    "0": {
+        "id": 1,
+        "name": "Product 1",
+        "price": 1,
+        "category": "Electronic"
+    },
+    "1": {
+        "id": 2,
+        "name": "Product 2",
+        "price": 2,
+        "category": "Fashion"
+    },
+    "5": {
+        "id": 6,
+        "name": "Product 6",
+        "price": 6,
+        "category": "Home Decor"
+    }
+}
